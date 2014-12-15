@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1418658328 source:d:\wins\pathmanager\main.cpp
+	"main.h"
+	"resource.h"
+	"util.h"
+	"dialogs.h"
+
+1418616015 d:\wins\pathmanager\resource.h
+
+1418617042 source:d:\wins\pathmanager\resource.rc
+	<windows.h>
+	"resource.h"
+
+1418623268 source:d:\wins\pathmanager\util.cpp
+	<windows.h>
+	<tchar.h>
+	"util.h"
+
+1418623268 d:\wins\pathmanager\util.h
+
+1418657763 source:d:\wins\pathmanager\dialogs.cpp
+	"main.h"
+	"util.h"
+	"dialogs.h"
+	"actions.h"
+
+1418657992 source:d:\wins\pathmanager\actions.cpp
+	"main.h"
+	"actions.h"
+
+1418657763 d:\wins\pathmanager\main.h
+	<windows.h>
+	<tchar.h>
+	<commdlg.h>
+	<shlwapi.h>
+	<commctrl.h>
+
+1418655425 d:\wins\pathmanager\dialogs.h
+
+1418657371 d:\wins\pathmanager\actions.h
+
