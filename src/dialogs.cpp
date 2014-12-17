@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "main.h"
 #include "util.h"
 #include "dialogs.h"

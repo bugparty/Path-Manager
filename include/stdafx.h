@@ -1,0 +1,38 @@
+// stdafx.h : 标准系统包含文件的包含文件，
+// 或是经常使用但不常更改的
+// 特定于项目的包含文件
+//
+
+#pragma once
+#if _MSC_VER
+#include "targetver.h"
+#define _CRT_SECURE_NO_WARNINGS
+#else
+#define _WIN32_WINNT 0x0600
+#define _WIN32_IE 0x0900
+#endif
+
+#define WIN32_LEAN_AND_MEAN             //  从 Windows 头文件中排除极少使用的信息
+//强制声明UNICODE
+#ifndef UNICODE
+#define UNICODE
+#if defined(UNICODE) && !defined(_UNICODE)
+#define _UNICODE
+#elif defined(_UNICODE) && !defined(UNICODE)
+#define UNICODE
+#endif
+#endif
+// Windows 头文件: 
+#include <windows.h>
+
+// C 运行时头文件
+#include <stdlib.h>
+#include <malloc.h>
+#include <memory.h>
+#include <tchar.h>
+ 
+#include <commdlg.h>
+#include <shlwapi.h>
+#include <commctrl.h>
+
+// TODO:  在此处引用程序需要的其他头文件

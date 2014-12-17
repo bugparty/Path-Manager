@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include "main.h"
+
 #include "actions.h"
 #include <stdio.h>
 void action_file_saveas(TCHAR* filename)
