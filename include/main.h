@@ -8,7 +8,6 @@
 #define UNICODE
 #endif
 
-
 #define _WIN32_WINNT 0x0600
 #define _WIN32_IE 0x0900
 
@@ -17,11 +16,11 @@
 #include <commdlg.h>
 #include <shlwapi.h>
 #include <commctrl.h>
-typedef struct _g_inst{
+typedef struct _g_inst {
     HWND hwnd;
     HWND hwndEdit;
     HINSTANCE hInst;
- } g_inst;
+} g_inst;
 
 extern g_inst g;
 #endif // __MAIN_H__

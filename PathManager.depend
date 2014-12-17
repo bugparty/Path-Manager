@@ -39,3 +39,44 @@
 
 1418657371 d:\wins\pathmanager\actions.h
 
+1418711870 source:d:\wins\pathmanager\res\resource.rc
+	<windows.h>
+	"../include/resource.h"
+
+1418708590 d:\wins\pathmanager\include\resource.h
+
+1418711361 source:d:\wins\pathmanager\src\actions.cpp
+	"main.h"
+	"actions.h"
+	<stdio.h>
+
+1418708590 d:\wins\pathmanager\include\main.h
+	<windows.h>
+	<tchar.h>
+	<commdlg.h>
+	<shlwapi.h>
+	<commctrl.h>
+
+1418711361 d:\wins\pathmanager\include\actions.h
+
+1418719762 source:d:\wins\pathmanager\src\dialogs.cpp
+	"main.h"
+	"util.h"
+	"dialogs.h"
+	"actions.h"
+
+1418708591 d:\wins\pathmanager\include\util.h
+
+1418708589 d:\wins\pathmanager\include\dialogs.h
+
+1418708590 source:d:\wins\pathmanager\src\main.cpp
+	"main.h"
+	"resource.h"
+	"util.h"
+	"dialogs.h"
+
+1418708590 source:d:\wins\pathmanager\src\util.cpp
+	<windows.h>
+	<tchar.h>
+	"util.h"
+

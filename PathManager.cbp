@@ -30,6 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
 			<Add library="gdi32" />
@@ -38,18 +39,18 @@
 			<Add library="comctl32" />
 			<Add library="comdlg32" />
 		</Linker>
-		<Unit filename="actions.cpp" />
-		<Unit filename="actions.h" />
-		<Unit filename="dialogs.cpp" />
-		<Unit filename="dialogs.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="main.h" />
-		<Unit filename="resource.h" />
-		<Unit filename="resource.rc">
+		<Unit filename="include/actions.h" />
+		<Unit filename="include/dialogs.h" />
+		<Unit filename="include/main.h" />
+		<Unit filename="include/resource.h" />
+		<Unit filename="include/util.h" />
+		<Unit filename="res/resource.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="util.cpp" />
-		<Unit filename="util.h" />
+		<Unit filename="src/actions.cpp" />
+		<Unit filename="src/dialogs.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/util.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
