@@ -33,20 +33,24 @@
     <File Name="src/dialogs.cpp"/>
     <File Name="src/main.cpp"/>
     <File Name="src/util.cpp"/>
+    <File Name="src/stdafx.cpp"/>
+    <File Name="src/document.cpp"/>
   </VirtualDirectory>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <VirtualDirectory Name="include">
     <File Name="include/actions.h"/>
     <File Name="include/dialogs.h"/>
     <File Name="include/main.h"/>
     <File Name="include/resource.h"/>
     <File Name="include/util.h"/>
+    <File Name="include/stdafx.h"/>
+    <File Name="include/document.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="res">
     <File Name="res/Application.manifest"/>
     <File Name="res/resource.rc"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
   <Settings Type="Executable">
     <GlobalSettings>
       <Compiler Options="" C_Options="" Assembler="">
@@ -58,7 +62,7 @@
       <ResourceCompiler Options=""/>
     </GlobalSettings>
     <Configuration Name="Debug" CompilerType="MinGW ( TDM-GCC )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
-      <Compiler Options="-g;-O0;-Wall " C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="D:/wins/PathManager/include/main.h" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+      <Compiler Options="-g;-O0;-Wall " C_Options="-g;-O0;-Wall" Assembler="" Required="yes" PreCompiledHeader="D:/wins/PathManager/include/stdafx.h" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <IncludePath Value="include"/>
       </Compiler>

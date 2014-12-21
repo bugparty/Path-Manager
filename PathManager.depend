@@ -43,23 +43,21 @@
 	<windows.h>
 	"../include/resource.h"
 
-1418708590 d:\wins\pathmanager\include\resource.h
+1418832429 d:\wins\pathmanager\include\resource.h
 
-1418711361 source:d:\wins\pathmanager\src\actions.cpp
+1418825332 source:d:\wins\pathmanager\src\actions.cpp
+	"stdafx.h"
 	"main.h"
 	"actions.h"
 	<stdio.h>
 
-1418708590 d:\wins\pathmanager\include\main.h
-	<windows.h>
-	<tchar.h>
-	<commdlg.h>
-	<shlwapi.h>
-	<commctrl.h>
+1418834226 d:\wins\pathmanager\include\main.h
+	"stdafx.h"
 
 1418711361 d:\wins\pathmanager\include\actions.h
 
-1418719762 source:d:\wins\pathmanager\src\dialogs.cpp
+1418825332 source:d:\wins\pathmanager\src\dialogs.cpp
+	"stdafx.h"
 	"main.h"
 	"util.h"
 	"dialogs.h"
@@ -69,14 +67,43 @@
 
 1418708589 d:\wins\pathmanager\include\dialogs.h
 
-1418708590 source:d:\wins\pathmanager\src\main.cpp
+1418886675 source:d:\wins\pathmanager\src\main.cpp
+	"stdafx.h"
 	"main.h"
 	"resource.h"
 	"util.h"
 	"dialogs.h"
 
-1418708590 source:d:\wins\pathmanager\src\util.cpp
-	<windows.h>
-	<tchar.h>
+1418825332 source:d:\wins\pathmanager\src\util.cpp
+	"stdafx.h"
+	"main.h"
 	"util.h"
+
+1418833422 d:\wins\pathmanager\include\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+	<commdlg.h>
+	<shlwapi.h>
+	<commctrl.h>
+
+1418825332 d:\wins\pathmanager\include\targetver.h
+	<SDKDDKVer.h>
+
+1418825332 source:d:\wins\pathmanager\src\stdafx.cpp
+	"stdafx.h"
+
+1418833422 source:d:\wins\pathmanager\include\stdafx.h
+	"targetver.h"
+	<windows.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<tchar.h>
+	<commdlg.h>
+	<shlwapi.h>
+	<commctrl.h>
 

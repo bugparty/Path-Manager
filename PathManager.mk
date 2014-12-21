@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=博文
-Date                   :=2014/12/17
+Date                   :=2014/12/18
 CodeLitePath           :="D:\Program Files\CodeLite"
 LinkerName             :=C:/TDM-GCC-32/bin/g++.exe 
 SharedObjectLinkerName :=C:/TDM-GCC-32/bin/g++.exe -shared -fPIC
@@ -63,7 +63,7 @@ AS       := C:/TDM-GCC-32/bin/as.exe
 ##
 CodeLiteDir:=D:\Program Files\CodeLite
 UNIT_TEST_PP_SRC_DIR:=d:\UnitTest++-1.3
-Objects0=$(IntermediateDirectory)/src_actions.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_dialogs.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_util.cpp$(ObjectSuffix) $(IntermediateDirectory)/res_resource.rc$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/src_actions.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_dialogs.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_main.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_util.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_stdafx.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_document.cpp$(ObjectSuffix) $(IntermediateDirectory)/res_resource.rc$(ObjectSuffix) 
 
 
 
@@ -87,8 +87,8 @@ $(IntermediateDirectory)/.d:
 PreBuild:
 
 # PreCompiled Header
-D:/wins/PathManager/include/main.h.gch: D:/wins/PathManager/include/main.h
-	$(CXX) $(SourceSwitch) D:/wins/PathManager/include/main.h $(PCHCompileFlags)
+D:/wins/PathManager/include/stdafx.h.gch: D:/wins/PathManager/include/stdafx.h
+	$(CXX) $(SourceSwitch) D:/wins/PathManager/include/stdafx.h $(PCHCompileFlags)
 
 
 
@@ -127,6 +127,22 @@ $(IntermediateDirectory)/src_util.cpp$(DependSuffix): src/util.cpp
 $(IntermediateDirectory)/src_util.cpp$(PreprocessSuffix): src/util.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_util.cpp$(PreprocessSuffix) "src/util.cpp"
 
+$(IntermediateDirectory)/src_stdafx.cpp$(ObjectSuffix): src/stdafx.cpp $(IntermediateDirectory)/src_stdafx.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "D:/wins/PathManager/src/stdafx.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_stdafx.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_stdafx.cpp$(DependSuffix): src/stdafx.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_stdafx.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_stdafx.cpp$(DependSuffix) -MM "src/stdafx.cpp"
+
+$(IntermediateDirectory)/src_stdafx.cpp$(PreprocessSuffix): src/stdafx.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_stdafx.cpp$(PreprocessSuffix) "src/stdafx.cpp"
+
+$(IntermediateDirectory)/src_document.cpp$(ObjectSuffix): src/document.cpp $(IntermediateDirectory)/src_document.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "D:/wins/PathManager/src/document.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_document.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_document.cpp$(DependSuffix): src/document.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_document.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_document.cpp$(DependSuffix) -MM "src/document.cpp"
+
+$(IntermediateDirectory)/src_document.cpp$(PreprocessSuffix): src/document.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_document.cpp$(PreprocessSuffix) "src/document.cpp"
+
 $(IntermediateDirectory)/res_resource.rc$(ObjectSuffix): res/resource.rc
 	$(RcCompilerName) -i "D:/wins/PathManager/res/resource.rc" $(RcCmpOptions)   $(ObjectSwitch)$(IntermediateDirectory)/res_resource.rc$(ObjectSuffix) $(RcIncludePath)
 
@@ -140,6 +156,6 @@ clean:
 	$(RM) $(OutputFile)
 	$(RM) $(OutputFile).exe
 	$(RM) ".build-debug/PathManager"
-	$(RM) D:/wins/PathManager/include/main.h.gch
+	$(RM) D:/wins/PathManager/include/stdafx.h.gch
 
 

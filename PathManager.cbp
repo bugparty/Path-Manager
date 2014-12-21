@@ -3,7 +3,6 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="PathManager" />
-		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
@@ -43,6 +42,10 @@
 		<Unit filename="include/dialogs.h" />
 		<Unit filename="include/main.h" />
 		<Unit filename="include/resource.h" />
+		<Unit filename="include/stdafx.h">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
 		<Unit filename="include/util.h" />
 		<Unit filename="res/resource.rc">
 			<Option compilerVar="WINDRES" />
@@ -50,6 +53,7 @@
 		<Unit filename="src/actions.cpp" />
 		<Unit filename="src/dialogs.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/stdafx.cpp" />
 		<Unit filename="src/util.cpp" />
 		<Extensions>
 			<code_completion />

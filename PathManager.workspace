@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="PathManager" Database="">
   <Project Name="PathManager" Path="PathManager.project" Active="Yes"/>
+  <Project Name="PathManagerTest" Path="PathManagerTest/PathManagerTest.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="PathManager" ConfigName="Debug"/>
+      <Project Name="PathManagerTest" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="no">
+    <WorkspaceConfiguration Name="Release" Selected="yes">
       <Project Name="PathManager" ConfigName="Release"/>
+      <Project Name="PathManagerTest" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

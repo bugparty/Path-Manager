@@ -1,19 +1,23 @@
-// stdafx.h : ±ê×¼ÏµÍ³°üº¬ÎÄ¼şµÄ°üº¬ÎÄ¼ş£¬
-// »òÊÇ¾­³£Ê¹ÓÃµ«²»³£¸ü¸ÄµÄ
-// ÌØ¶¨ÓÚÏîÄ¿µÄ°üº¬ÎÄ¼ş
+// stdafx.h : æ ‡å‡†ç³»ç»ŸåŒ…å«æ–‡ä»¶çš„åŒ…å«æ–‡ä»¶ï¼Œ
+// æˆ–æ˜¯ç»å¸¸ä½¿ç”¨ä½†ä¸å¸¸æ›´æ”¹çš„
+// ç‰¹å®šäºé¡¹ç›®çš„åŒ…å«æ–‡ä»¶
 //
 
+
+#ifdef _MSC_VER
 #pragma once
-#if _MSC_VER
 #include "targetver.h"
 #define _CRT_SECURE_NO_WARNINGS
 #else
+	#ifndef __STDAFX__
+	#define __STDAFX__
+
 #define _WIN32_WINNT 0x0600
 #define _WIN32_IE 0x0900
 #endif
 
-#define WIN32_LEAN_AND_MEAN             //  ´Ó Windows Í·ÎÄ¼şÖĞÅÅ³ı¼«ÉÙÊ¹ÓÃµÄĞÅÏ¢
-//Ç¿ÖÆÉùÃ÷UNICODE
+#define WIN32_LEAN_AND_MEAN             //  ä» Windows å¤´æ–‡ä»¶ä¸­æ’é™¤æå°‘ä½¿ç”¨çš„ä¿¡æ¯ this will assume smaller exe
+//å¼ºåˆ¶å£°æ˜UNICODE
 #ifndef UNICODE
 #define UNICODE
 #if defined(UNICODE) && !defined(_UNICODE)
@@ -22,17 +26,20 @@
 #define UNICODE
 #endif
 #endif
-// Windows Í·ÎÄ¼ş: 
+// Windows å¤´æ–‡ä»¶:
 #include <windows.h>
 
-// C ÔËĞĞÊ±Í·ÎÄ¼ş
+// C è¿è¡Œæ—¶å¤´æ–‡ä»¶
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
- 
+
 #include <commdlg.h>
 #include <shlwapi.h>
 #include <commctrl.h>
 
-// TODO:  ÔÚ´Ë´¦ÒıÓÃ³ÌĞòĞèÒªµÄÆäËûÍ·ÎÄ¼ş
+
+#ifndef _MSC_VER
+	#endif
+#endif

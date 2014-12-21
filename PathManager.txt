@@ -1,1 +1,1 @@
-./Debug/src_actions.cpp.o ./Debug/src_dialogs.cpp.o ./Debug/src_main.cpp.o ./Debug/src_util.cpp.o ./Debug/res_resource.rc.o   
+./Debug/src_actions.cpp.o ./Debug/src_dialogs.cpp.o ./Debug/src_main.cpp.o ./Debug/src_util.cpp.o ./Debug/src_stdafx.cpp.o ./Debug/src_document.cpp.o ./Debug/res_resource.rc.o   

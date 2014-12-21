@@ -7,6 +7,7 @@
 #define ID_FILE_SAVE 40003
 #define ID_FILE_SAVEAS 40004
 #define ID_EDIT 105
+#define ID_LISTVIEW 106
 
 #ifndef IDC_STATIC
 #define IDC_STATIC -1
