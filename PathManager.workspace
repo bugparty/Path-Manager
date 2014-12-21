@@ -2,6 +2,7 @@
 <CodeLite_Workspace Name="PathManager" Database="">
   <Project Name="PathManager" Path="PathManager.project" Active="Yes"/>
   <Project Name="PathManagerTest" Path="PathManagerTest/PathManagerTest.project" Active="No"/>
+
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="PathManager" ConfigName="Debug"/>
