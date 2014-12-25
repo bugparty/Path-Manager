@@ -56,6 +56,26 @@ namespace UnitTest
 		
 
 		}
+		TEST_METHOD(TestRealPath1)
+		{
+
+			path_item* root = (path_item*)malloc(sizeof(path_item));
+
+			Assert::IsTrue(parse(_T("C:\\Python27\\;C:\Python27\\Scripts;C:\\Program Files (x86)\\AMD APP\\bin\\x86_64;C:\\Program Files (x86)\\AMD APP\\bin\\x86;D:\\Program Files\\MATLAB\\R2014b\\polyspace\\bin"), root));
+			Assert::AreEqual(_T("C:\\Python27\\;"), root->path);
+			Assert::IsTrue(root->next != (path_item*)NULL);
+			root = root->next;
+			Assert::AreEqual(_T("C:\Python27\\Scripts;"), root->path);
+			root = root->next;
+			Assert::AreEqual(_T("C:\\Program Files (x86)\\AMD APP\\bin\\x86_64;"), root->path);
+			root = root->next;
+			Assert::AreEqual(_T("C:\\Program Files (x86)\\AMD APP\\bin\\x86;"), root->path);
+			root = root->next;
+			Assert::AreEqual(_T("D:\\Program Files\\MATLAB\\R2014b\\polyspace\\bin"), root->path);
+			Assert::IsTrue(root->next == (path_item*)NULL);
+
+
+		}
 
 	};
 }

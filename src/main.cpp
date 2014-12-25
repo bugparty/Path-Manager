@@ -2,6 +2,7 @@
 #include "main.h"
 #include "resource.h"
 #include "util.h"
+#include "document.h"
 
 #include "dialogs.h"
 /*  Declare Windows procedure  */
@@ -123,7 +124,9 @@ void readPath()
 	return;
     }
     SetWindowText(g.hwndEdit, g.editBuf);
+
     RegCloseKey(hk);
+	parse(g.editBuf, &g.root);
 }
 INT_PTR CALLBACK AboutDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {

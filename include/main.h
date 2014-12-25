@@ -1,11 +1,12 @@
-#if _MSC_VER
-#pragma once
-#else
-	#ifndef __MAIN_H__
-	#define __MAIN_H__
-#endif
-#include "stdafx.h"
 
+#ifndef __MAIN_H__
+#define __MAIN_H__
+#ifdef _MSC_VER
+#pragma once
+#endif
+
+#include "stdafx.h"
+#include "document.h"
 
 typedef struct _g_inst {
     HWND hwnd;
@@ -17,12 +18,12 @@ typedef struct _g_inst {
     HINSTANCE hInst;
 	TCHAR *editBuf;
 	DWORD dwEditSize;
-
+	path_item root;
 
 } g_inst;
 
 extern g_inst g;
 
-#ifndef _MSC_VER
+
 #endif // __MAIN_H__
-#endif
+ 
