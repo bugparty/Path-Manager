@@ -36,6 +36,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <cassert>
 
 #include <commdlg.h>
 #include <shlwapi.h>

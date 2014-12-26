@@ -127,6 +127,7 @@ void readPath()
 
     RegCloseKey(hk);
 	parse(g.editBuf, &g.root);
+	updateListview(&g.root);
 }
 INT_PTR CALLBACK AboutDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -168,50 +169,8 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
 	                          (HMENU)ID_EDIT,
 	                          NULL,
 	                          NULL);
-     // Create the list-view window in report view with label editing enabled.
-    g.hwndListView = CreateWindow(WC_LISTVIEW,
-                                     _T("List"),
-                                     WS_CHILD | WS_VISIBLE | LVS_REPORT | LVS_EDITLABELS,
-                                     20, 130,
-                                     500,
-                                     300,
-                                     hwnd,
-                                     (HMENU)ID_LISTVIEW ,
-                                     g.hInst,
-                                     NULL);
-    SendMessage(g.hwndListView,LVM_SETEXTENDEDLISTVIEWSTYLE,0,LVS_EX_FULLROWSELECT); // Set style
-    // Here we put the info on the Coulom headers
-    // this is not data, only name of each header we like
-    memset(&g.LvCol,0,sizeof(g.LvCol)); // Reset Coluom
-    g.LvCol.mask=LVCF_TEXT|LVCF_WIDTH|LVCF_SUBITEM; // Type of mask
-    g.LvCol.cx=80;  // width between each coloum
-    g.LvCol.pszText=_T("Type");// First Header
-    // Inserting Couloms as much as we want
-    SendMessage(g.hwndListView,LVM_INSERTCOLUMN,0,(LPARAM)&g.LvCol); // Insert/Show the coloum
-    g.LvCol.pszText=_T("Value");
-    g.LvCol.cx=420 ;                         // Next coloum
-    SendMessage(g.hwndListView,LVM_INSERTCOLUMN,1,(LPARAM)&g.LvCol); // ...
+	createListView(hwnd);
 
-
-    memset(&g.LvItem,0,sizeof(g.LvItem)); // Reset Item Struct
-    //  Setting properties Of Items:
-
-    g.LvItem.mask=LVIF_TEXT;   // Text Style
-    g.LvItem.cchTextMax = 256; // Max size of test
-
-    g.LvItem.iItem=0;          // choose item
-    g.LvItem.iSubItem=0;       // Put in first coluom
-    g.LvItem.pszText=_T("Item 0"); // Text to display (can be from a char variable) (Items)
-
-    SendMessage(g.hwndListView,LVM_INSERTITEM,0,(LPARAM)&g.LvItem); // Send to the Listview
-    TCHAR buf[255];
-    for(int i=1;i<=2;i++) // Add SubItems in a loop
-				{
-					g.LvItem.iSubItem=i;
-					wsprintf(buf,_T("SubItem %d"),i);
-					g.LvItem.pszText=buf;
-					SendMessage(g.hwndListView,LVM_SETITEM,0,(LPARAM)&g.LvItem); // Enter text to SubItems
-				}
 	readPath();
 	break;
     case WM_DESTROY:

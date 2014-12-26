@@ -17,7 +17,7 @@ struct _path_item{
 	long index;
 	path_item*next;
 };
-
+VOID createListView(HWND hwnd);
 BOOL parse(TCHAR* in, path_item* out);
-
+BOOL updateListview(path_item* root);
 #endif

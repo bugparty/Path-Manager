@@ -76,6 +76,27 @@ namespace UnitTest
 
 
 		}
+		TEST_METHOD(TestRealPathIndex)
+		{
+
+			path_item* root = (path_item*)malloc(sizeof(path_item));
+
+			Assert::IsTrue(parse(_T("C:\\Python27\\;C:\Python27\\Scripts;C:\\Program Files (x86)\\AMD APP\\bin\\x86_64;C:\\Program Files (x86)\\AMD APP\\bin\\x86;D:\\Program Files\\MATLAB\\R2014b\\polyspace\\bin"), root));
+			Assert::AreEqual(0L, root->index);
+			Assert::IsTrue(root->next != (path_item*)NULL);
+			root = root->next;
+			Assert::AreEqual(1L, root->index);
+			root = root->next;
+			Assert::AreEqual(2L, root->index);
+			root = root->next;
+			Assert::AreEqual(3L, root->index);
+			root = root->next;
+			Assert::AreEqual(4L, root->index);
+
+			Assert::IsTrue(root->next == (path_item*)NULL);
+
+
+		}
 
 	};
 }
