@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/dialogs.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/actions.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/stdafx.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/document.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/util.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/actions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/document.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/targetver.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/resource.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/stdafx.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/dialogs.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/util.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/main.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/UnitTest/targetver.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/UnitTest/stdafx.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/UnitTest/stdafx.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/UnitTest/unittest1.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PathManagerTest/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PathManagerTest/documentTest.cpp" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file://C:/TDM-GCC-32/lib/gcc/mingw32/5.1.0/include" />
+          <root url="file://C:/TDM-GCC-32/lib/gcc/mingw32/5.1.0/include-fixed" />
+          <root url="file://C:/TDM-GCC-32/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://C:/TDM-GCC-32/lib/gcc/mingw32/5.1.0/include" />
+          <root url="file://C:/TDM-GCC-32/lib/gcc/mingw32/5.1.0/include-fixed" />
+          <root url="file://C:/TDM-GCC-32/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
