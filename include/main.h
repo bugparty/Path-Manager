@@ -11,6 +11,7 @@
 typedef struct _g_inst {
     HWND hwnd;
     HWND hwndEdit;
+	HWND hwndTab;
     HWND hwndListView;
     LVCOLUMN LvCol; // Make Coluom struct for ListView
     LVITEM LvItem;  // ListView Item struct

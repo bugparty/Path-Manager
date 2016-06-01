@@ -12,13 +12,27 @@ LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM);
 TCHAR szClassName[] = _T("Path Manager Main Frame");
 
 g_inst g;
+void InitCommonControl() {
+	INITCOMMONCONTROLSEX InitCtrlEx;
+	InitCtrlEx.dwSize = sizeof(INITCOMMONCONTROLSEX);
+	InitCtrlEx.dwICC = ICC_STANDARD_CLASSES | ICC_LISTVIEW_CLASSES;
+	InitCommonControlsEx(&InitCtrlEx);
+}
+
+void ShowTab(int index, HWND hwnd);
+void ShowTab0(HWND hwnd);
+void ShowTab1(HWND hwnd);
+
+void ClearTab(int index);
+void ClearTab0();
+void ClearTab1();
+
 int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszArgument, int nCmdShow)
 {
 
     MSG messages;     /* Here messages to the application are saved */
     WNDCLASSEX wincl; /* Data structure for the windowclass */
-    INITCOMMONCONTROLSEX icc;
-    INITCOMMONCONTROLSEX InitCtrlEx;
+    
     g.hInst = hThisInstance;
     /* The Window structure */
     wincl.hInstance = hThisInstance;
@@ -40,10 +54,8 @@ int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszA
     /* Register the window class, and if it fails quit the program */
     if(!RegisterClassEx(&wincl))
 	return 0;
-
-    InitCtrlEx.dwSize = sizeof(INITCOMMONCONTROLSEX);
-    InitCtrlEx.dwICC = ICC_STANDARD_CLASSES | ICC_LISTVIEW_CLASSES;
-    InitCommonControlsEx(&InitCtrlEx);
+	
+	InitCommonControl();
     /* The class is registered, let's create the program*/
     g.hwnd = CreateWindowEx(0, /* Extended possibilites for variation */
                             szClassName,
@@ -74,7 +86,7 @@ int WINAPI WinMain(HINSTANCE hThisInstance, HINSTANCE hPrevInstance, LPSTR lpszA
     return messages.wParam;
 }
 
-void readPath()
+void ReadPath()
 {
 
     HKEY hk;
@@ -129,6 +141,7 @@ void readPath()
 	parse(g.editBuf, &g.root);
 	updateListview(&g.root);
 }
+
 INT_PTR CALLBACK AboutDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch(uMsg) {
@@ -150,39 +163,148 @@ INT_PTR CALLBACK AboutDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM 
     return (INT_PTR)FALSE;
 }
 
+BOOL OnNotify(HWND hwndTab, LPARAM lParam)
+{
+	TCHAR achTemp[256]; // temporary buffer for strings
+	static int prevTabIndex = 0;
+
+	switch (((LPNMHDR)lParam)->code)
+	{
+	case TCN_SELCHANGING:
+	{
+		// Return FALSE to allow the selection to change.
+		return FALSE;
+	}
+	break;
+	case TCN_SELCHANGE:
+	{
+		int iPage = TabCtrl_GetCurSel(hwndTab);
+		
+		// Note that g_hInst is the global instance handle.
+		WCHAR buf[128];
+		wsprintf(buf, L"tab %i\n", iPage);
+		OutputDebugStringW(buf);
+
+		if (prevTabIndex == iPage) {
+			return TRUE;
+		}
+		ClearTab(prevTabIndex);
+		ShowTab(iPage, g.hwnd);
+		prevTabIndex = iPage;
+		
+	}
+	break;
+	}
+	return TRUE;
+}
+
+HWND CreateMainEditCtrl(HWND hWnd)
+{
+	return CreateWindow(_T("Edit"),
+		NULL,
+		WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | ES_MULTILINE,
+		20,
+		22,
+		500,
+		100,
+		hWnd,
+		(HMENU)ID_EDIT,
+		NULL,
+		NULL);
+}
+
+void ShowTab0(HWND hwnd)
+{
+	g.hwndEdit = CreateMainEditCtrl(hwnd);
+	createListView(hwnd);
+	ReadPath();
+}
+
+void ShowTab1(HWND hwnd)
+{
+
+}
+
+void ShowTab(int index, HWND hwnd)
+{
+	switch (index) {
+	case 0:
+		ShowTab0(hwnd);
+		break;
+	case 1:
+		ShowTab1(hwnd);
+		break;
+	}
+}
+void ClearTab0()
+{
+	DestroyWindow(g.hwndEdit);
+	DestroyWindow(g.hwndListView);
+}
+
+void ClearTab1()
+{
+
+}
+
+void ClearTab(int index)
+{
+	switch (index) {
+	case 0:
+		ClearTab0();
+		break;
+	case 1:
+		ClearTab1();
+		break;
+
+	}
+}
+HWND CreateMainTab(HWND hWnd)
+{
+	HWND hwndTab = CreateWindow(WC_TABCONTROL, L"",
+		WS_CHILD | WS_CLIPSIBLINGS | WS_VISIBLE,
+		0, 0, 530, 20, 
+		hWnd, NULL, g.hInst, NULL);
+	if (hwndTab == NULL)
+	{
+		return NULL;
+	}
+	TCITEM item;
+	item.mask = TCIF_TEXT | TCIF_IMAGE;
+	item.iImage = -1;
+	item.pszText = L"Path";
+	int iRet = TabCtrl_InsertItem(hwndTab, 0, &item);
+	assert(iRet != -1);
+	item.pszText = L"Other Path";
+	iRet = TabCtrl_InsertItem(hwndTab, 1, &item);
+	assert(iRet != -1);
+	return hwndTab;
+}
+
 /*  This function is called by the Windows function DispatchMessage()  */
 
 LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	
 
     switch(message) /* handle the messages */
     {
     case WM_CREATE:
-	g.hwndEdit = CreateWindow(_T("Edit"),
-	                          NULL,
-	                          WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | ES_MULTILINE,
-	                          20,
-	                          20,
-	                          500,
-	                          100,
-	                          hwnd,
-	                          (HMENU)ID_EDIT,
-	                          NULL,
-	                          NULL);
-	createListView(hwnd);
-
-	readPath();
-	break;
-    case WM_DESTROY:
-	free(g.editBuf);
-	PostQuitMessage(0); /* send a WM_QUIT to the message queue */
-	break;
-    case WM_COMMAND: {
-	switch(LOWORD(wParam)) {
-	case ID_HELP_ABOUT: {
-	    DialogBox(g.hInst, MAKEINTRESOURCE(IDD_ABOUTDIALOG), hwnd, &AboutDialogProc);
-	    return 0;
-	}
+		g.hwndTab = CreateMainTab(hwnd);
+		ShowTab0(hwnd);
+		break;
+	case WM_DESTROY:
+		free(g.editBuf);
+		PostQuitMessage(0); /* send a WM_QUIT to the message queue */
+		break;
+	case WM_NOTIFY:
+		return OnNotify(g.hwndTab, lParam);
+	case WM_COMMAND: {
+		switch(LOWORD(wParam)) {
+		case ID_HELP_ABOUT: {
+			DialogBox(g.hInst, MAKEINTRESOURCE(IDD_ABOUTDIALOG), hwnd, &AboutDialogProc);
+			return 0;
+		}
 
 	case ID_FILE_EXIT: {
 	    DestroyWindow(hwnd);
